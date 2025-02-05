@@ -1,53 +1,45 @@
-# Next.js & HeroUI Template
+# NoteScanner
 
-This is a template for creating applications using Next.js 14 (app directory) and HeroUI (v2).
+NoteScanner is a web application that allows users to view and summarize text notes. The application fetches `.txt` files from a specified directory, generates summaries for each file, and displays the content in a user-friendly interface.
 
-[Try it on CodeSandbox](https://githubbox.com/heroui-inc/heroui/next-app-template)
+## Features
 
-## Technologies Used
+- Fetches `.txt` files from the server
+- Generates summaries for each note
+- Displays the full content of selected notes
+- User-friendly sidebar for easy navigation
 
-- [Next.js 14](https://nextjs.org/docs/getting-started)
-- [HeroUI v2](https://heroui.com/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Tailwind Variants](https://tailwind-variants.org)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Framer Motion](https://www.framer.com/motion/)
-- [next-themes](https://github.com/pacocoursey/next-themes)
+## Setup
 
-## How to Use
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/notescanner.git
+   cd notescanner
+   ```
 
-### Use the template with create-next-app
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-To create a new project based on this template using `create-next-app`, run the following command:
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
 
-```bash
-npx create-next-app -e https://github.com/heroui-inc/next-app-template
-```
+4. Open your browser and navigate to `http://localhost:3000`.
 
-### Install dependencies
+## Usage
 
-You can use one of them `npm`, `yarn`, `pnpm`, `bun`, Example using `npm`:
+- The sidebar displays a list of `.txt` files with their summaries.
+- Click on a note in the sidebar to view its full content and summary.
+- If no notes are found, a message will be displayed indicating that no `.txt` files were found.
 
-```bash
-npm install
-```
+## API
 
-### Run the development server
-
-```bash
-npm run dev
-```
-
-### Setup pnpm (optional)
-
-If you are using `pnpm`, you need to add the following code to your `.npmrc` file:
-
-```bash
-public-hoist-pattern[]=*@heroui/*
-```
-
-After modifying the `.npmrc` file, you need to run `pnpm install` again to ensure that the dependencies are installed correctly.
+- The application fetches notes from the `/api/notes` endpoint.
+- The endpoint reads `.txt` files from the `public/notes` directory and returns their content.
 
 ## License
 
-Licensed under the [MIT license](https://github.com/heroui-inc/next-app-template/blob/main/LICENSE).
+This project is licensed under the MIT License.
