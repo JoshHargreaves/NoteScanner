@@ -6,51 +6,44 @@ import { button as buttonStyles } from "@heroui/theme";
 import { siteConfig } from "@/config/site";
 import { title, subtitle } from "@/components/primitives";
 import { GithubIcon } from "@/components/icons";
+import Sidebar from "@/components/sidebar";
+import { Card } from "@heroui/react";
 
 export default function Home() {
   return (
-    <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
-      <div className="inline-block max-w-xl text-center justify-center">
-        <span className={title()}>Make&nbsp;</span>
-        <span className={title({ color: "violet" })}>beautiful&nbsp;</span>
-        <br />
-        <span className={title()}>
-          websites regardless of your design experience.
-        </span>
-        <div className={subtitle({ class: "mt-4" })}>
-          Beautiful, fast and modern React UI library.
+    <div>
+      <Sidebar/>
+      <div className="flex-1 overflow-auto">
+        <div className="max-w-3xl mx-auto p-8">
+          {selectedFile ? (
+            <div className="space-y-6">
+              <div>
+                <h2 className="text-2xl font-bold flex items-center gap-2 mb-4">
+                  <FileText className="h-6 w-6" />
+                  {selectedFile.filename}
+                </h2>
+                <Card className="p-6">
+                  <h3 className="text-lg font-semibold mb-3">Summary</h3>
+                  <p className="text-muted-foreground mb-6">
+                    {selectedFile.summary}
+                  </p>
+                  <Separator className="my-4" />
+                  <h3 className="text-lg font-semibold mb-3">Full Content</h3>
+                  <div className="bg-muted p-4 rounded-lg">
+                    <pre className="whitespace-pre-wrap font-mono text-sm">
+                      {selectedFile.content}
+                    </pre>
+                  </div>
+                </Card>
+              </div>
+            </div>
+          ) : (
+            <div className="flex items-center justify-center h-[calc(100vh-200px)] text-muted-foreground">
+              Select a note from the sidebar to view its content
+            </div>
+          )}
         </div>
       </div>
-
-      <div className="flex gap-3">
-        <Link
-          isExternal
-          className={buttonStyles({
-            color: "primary",
-            radius: "full",
-            variant: "shadow",
-          })}
-          href={siteConfig.links.docs}
-        >
-          Documentation
-        </Link>
-        <Link
-          isExternal
-          className={buttonStyles({ variant: "bordered", radius: "full" })}
-          href={siteConfig.links.github}
-        >
-          <GithubIcon size={20} />
-          GitHub
-        </Link>
-      </div>
-
-      <div className="mt-8">
-        <Snippet hideCopyButton hideSymbol variant="bordered">
-          <span>
-            Get started by editing <Code color="primary">app/page.tsx</Code>
-          </span>
-        </Snippet>
-      </div>
-    </section>
+    </div>
   );
 }
