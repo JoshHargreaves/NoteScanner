@@ -42,4 +42,4 @@ NoteScanner is a web application that allows users to view and summarize text no
 
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the GNU General Public License (GPL).
